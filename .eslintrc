@@ -1,7 +1,17 @@
 ---
 extends: "@elastic/kibana"
 
+plugins:
+ - prettier
+
+rules:
+  prettier/prettier: error
+
 settings:
   import/resolver:
     '@elastic/eslint-import-resolver-kibana':
-      rootPackageName: 'collapser'
+      rootPackageName: 'tasks-demo'
+  react:
+    createClass: "Component"
+    pragma: "h"
+    version: '16.3'
