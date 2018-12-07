@@ -22,8 +22,8 @@ export class Main extends React.Component {
        manage state and update your UI than this.
     */
     const { httpClient } = this.props;
-    httpClient.get('../api/collapser/example').then((resp) => {
-      this.setState({ time: resp.data.time });
+    httpClient.get('../api/collapser/get_data').then(({ data }) => {
+      this.setState({ time: data.time });
     });
   }
   render() {
@@ -31,20 +31,10 @@ export class Main extends React.Component {
     return (
       <EuiPage>
         <EuiPageBody>
-          <EuiPageHeader>
-            <EuiTitle size="l">
-              <h1>{title} Hello World!</h1>
-            </EuiTitle>
-          </EuiPageHeader>
           <EuiPageContent>
-            <EuiPageContentHeader>
-              <EuiTitle>
-                <h2>Congratulations</h2>
-              </EuiTitle>
-            </EuiPageContentHeader>
             <EuiPageContentBody>
               <EuiText>
-                <h3>You have successfully created your first Kibana Plugin!</h3>
+                <h3>You have successfully!</h3>
                 <p>The server time (via API call) is {this.state.time || 'NO API CALL YET'}</p>
               </EuiText>
             </EuiPageContentBody>

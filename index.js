@@ -1,4 +1,4 @@
-import getDataRoute from './server/routes/get_data';
+import { getDataRoute } from './server/routes/get_data';
 
 export default function (kibana) {
   return new kibana.Plugin({

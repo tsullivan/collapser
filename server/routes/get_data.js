@@ -1,11 +1,19 @@
 export function getDataRoute(server) {
+  const { callWithRequest } = server.plugins.elasticsearch.getCluster('data');
 
   server.route({
-    path: '/api/collapser/example',
+    path: '/api/collapser/get_data',
     method: 'GET',
-    handler() {
-      return { time: (new Date()).toISOString() };
+    async handler(req) {
+      const data = await callWithRequest(req, 'search', {
+        index: 'babynames'
+      });
+
+
+      return {
+        time: (new Date()).toISOString(),
+        hits: data,
+      };
     }
   });
-
 }
