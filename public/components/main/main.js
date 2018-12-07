@@ -7,7 +7,7 @@ import {
   EuiPageContent,
   EuiPageContentHeader,
   EuiPageContentBody,
-  EuiText
+  EuiText,
 } from '@elastic/eui';
 
 export class Main extends React.Component {
@@ -35,7 +35,10 @@ export class Main extends React.Component {
             <EuiPageContentBody>
               <EuiText>
                 <h3>You have successfully!</h3>
-                <p>The server time (via API call) is {this.state.time || 'NO API CALL YET'}</p>
+                <p>
+                  The server time (via API call) is{' '}
+                  {this.state.time || 'NO API CALL YET'}
+                </p>
               </EuiText>
             </EuiPageContentBody>
           </EuiPageContent>

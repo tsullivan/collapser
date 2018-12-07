@@ -18,8 +18,8 @@ export default function (kibana) {
       }).default();
     },
 
-    init(server, options) { // eslint-disable-line no-unused-vars
+    init(server) {
       getDataRoute(server);
-    }
+    },
   });
 }

@@ -12,6 +12,4 @@ settings:
     '@elastic/eslint-import-resolver-kibana':
       rootPackageName: 'tasks-demo'
   react:
-    createClass: "Component"
-    pragma: "h"
     version: '16.3'
