@@ -14,15 +14,31 @@ export class Main extends React.Component {
   }
 
   componentDidMount() {
-    /*
-       FOR EXAMPLE PURPOSES ONLY.  There are much better ways to
-       manage state and update your UI than this.
-    */
     const { httpClient } = this.props;
     httpClient.get('../api/collapser/get_data').then(({ data }) => {
-      this.setState({ time: data.time, total: data.total });
+      this.setState({
+        time: data.time,
+        total: data.total,
+        hits: data.hits,
+      });
     });
   }
+
+  renderTable(hits) {
+    const rows = hits.map(hit => {
+      return (
+        <tr>
+          <td>{hit.name}</td>
+          <td>{hit.gender}</td>
+          <td>{hit.year}</td>
+          <td>{hit.percent}</td>
+          <td>{hit.value}</td>
+        </tr>
+      );
+    });
+    return <table>{rows}</table>;
+  }
+
   render() {
     return (
       <EuiPage>
@@ -31,6 +47,7 @@ export class Main extends React.Component {
             <EuiPageContentBody>
               <EuiText>
                 <h3>You have successfully!</h3>
+                {this.state.hits ? this.renderTable(this.state.hits) : null}
                 <p>
                   The server time (via API call) is{' '}
                   {this.state.time || 'NO API CALL YET'}
