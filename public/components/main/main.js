@@ -1,11 +1,8 @@
 import React from 'react';
 import {
   EuiPage,
-  EuiPageHeader,
-  EuiTitle,
   EuiPageBody,
   EuiPageContent,
-  EuiPageContentHeader,
   EuiPageContentBody,
   EuiText,
 } from '@elastic/eui';
@@ -23,11 +20,10 @@ export class Main extends React.Component {
     */
     const { httpClient } = this.props;
     httpClient.get('../api/collapser/get_data').then(({ data }) => {
-      this.setState({ time: data.time });
+      this.setState({ time: data.time, total: data.total });
     });
   }
   render() {
-    const { title } = this.props;
     return (
       <EuiPage>
         <EuiPageBody>
